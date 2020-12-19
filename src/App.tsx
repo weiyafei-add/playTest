@@ -9,8 +9,7 @@ interface ThemeProps {
   [key: string]: {color: string, background: string}
 }
 465465
-
-'修改89+上的提交'
+console.log('bug 修复完毕')
 
 export const theme: ThemeProps = {
   light: {
