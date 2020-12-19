@@ -4,7 +4,7 @@ import Hello from './button/index'
 import MyButton from './ButtonCustom/button'
 import {Button} from 'antd'
 // 主题色
-console.log('最后一次修复线上BUg')
+console.log('最后一次修复线上BUg,完毕')
 
 interface ThemeProps {
   [key: string]: {color: string, background: string}
