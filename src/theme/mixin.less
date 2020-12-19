@@ -1,0 +1,67 @@
+// 禁止用户选择文本内容
+.no-selected {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+// 多余文字显示...
+.single-ellipsis(@width) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: @width;
+}
+// 居中
+.align-center {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+// 占位颜色
+.placeholder-setting(@color: #999) {
+    &::-webkit-input-placeholder {
+        color: @color !important;
+    }
+    &::-moz-placeholder {
+        color: @color !important;
+    }
+    &:-moz-placeholder {
+        color: @color !important;
+    }
+    &:-ms-input-placeholder {
+        color: @color !important;
+    }
+}
+// 
+.inline-jusify {
+    text-align: justify;
+    vertical-align: top;
+    display: inline-block;
+    &::after {
+        height: 0;
+        width: 100%;
+        content: '';
+        display: inline-block;
+    }
+}
+// 
+.inline-noJusify {
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+}
+.webkit-scroll-bar {
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: #f1f1f1;  
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+        background-color: #cccccc;
+    }
+}

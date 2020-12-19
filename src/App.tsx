@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React , {useCallback, useEffect, useMemo}from 'react';
+import './App.less';
+import Hello from './button/index'
+import MyButton from './ButtonCustom/button'
+import {Button} from 'antd'
+// 主题色
+
+interface ThemeProps {
+  [key: string]: {color: string, background: string}
+}
+
+export const theme: ThemeProps = {
+  light: {
+    color: '#000',
+    background: '#fff',
+  },
+  drak: {
+    color: '#fff',
+    background: '#000'
+  }
+}
+export const themeContext = React.createContext(theme.light)
 
 function App() {
+ 
+    
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button style={{marginRight:'50px'}}>我是按钮</Button>
+      {
+        Buttons()
+      }
+      {
+        Buttons()
+      }
     </div>
   );
+}
+
+const Buttons = () => {
+  const [ show, setShow] = React.useState(false)
+  const [obj, setObj] = React.useState({
+    name: 'weiyafei',
+    age: 25,
+    love: 'you',
+    })
+    const [ss, setSS] = React.useState(123)
+    const [aa, setAA] = React.useState(123)
+    // const getDate = useCallback(() => {
+    //   setSS(46)
+    // },[obj.name])
+    const handleClick1 = () => {
+      console.log('object')
+    }
+  return (
+    <div>
+      <MyButton type='primary' loading={show}  onClick={() => handleClick1()}>我是自定义按钮哟</MyButton>
+    </div>
+  )
 }
 
 export default App;

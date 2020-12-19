@@ -1,0 +1,142 @@
+@import '../theme/color.less';
+@import '../theme/mixin.less';
+@import '../theme/variable.less';
+
+
+@prefix: ccp-custom;
+@sizes: large, middle, small;
+@types: primary, warning, danger;
+
+.button-size-mixin(@sizes) {
+    each(@sizes, {
+        @button-min-width: 'button-size-@{value}';
+        @button-height: 'button-size-@{value}-height';
+        @button-font-size: 'button-size-@{value}-font';
+        @button-padding: 'button-size-@{value}-padding';
+
+        &.@{value} {
+            height: @@button-height;
+            padding: 0 @@button-padding;
+            min-width: @@button-min-width;
+            font-size: @@button-font-size;
+            line-height: @@button-height - 2;
+        }
+    })
+}
+
+.button-type-mixin(@types) {
+    each(@types, {
+        @button-color: 'button-@{value}-color';
+        @button-hover-color: 'button-@{value}-hover-color';
+        @button-actived-color: 'button-@{value}-actived-color';
+        @button-disabled-color: 'button-@{value}-disabled-color';
+
+        &.@{value} {
+            color: #ffffff;
+            background-color: @@button-color;
+            border: 1px solid @@button-color;
+            &:hover {
+                border-color: @@button-hover-color;
+                background-color: @@button-hover-color;
+            }
+            &:active {
+                border-color: @@button-actived-color;
+                background-color: @@button-actived-color;
+            }
+        }
+        &.disabled.@{value} {
+            color: #ffffff;
+            border-color: @@button-disabled-color;
+            background-color: @@button-disabled-color;
+        }
+        &.loading.@{value} {
+            border-color: @@button-hover-color;
+            background-color: @@button-hover-color;
+        }
+        &.ghost.@{value} {
+            color: @@button-color;
+            background-color: #ffffff;
+            border-color: @@button-color;
+
+            &:hover {
+                color: @@button-hover-color;
+                border-color: @@button-hover-color;
+                background-color: fade(@@button-color, 6%);
+            }
+            &:active {
+                color: @@button-actived-color;
+                border-color: @@button-actived-color;
+            }
+        }
+        &.ghost.disabled.@{value} {
+            background-color: #ffffff;
+            color: @@button-disabled-color;
+            border-color: @@button-disabled-color;
+        }
+    })
+}
+
+.button-default-type-mixin() {
+    // 默认状态
+    &.default {
+        color: @button-default-color;
+        background-color: #ffffff;
+        border: 1px solid @button-default-border-color;
+        &:hover {
+            color: @button-default-hover-color;
+            border-color: @button-default-border-hover-color;
+        }
+        &:active {
+            color: @button-default-actived-color;
+            border-color: @button-default-border-actived-color;
+            
+        }
+    }
+    // 默认禁用
+    &.disabled.default {
+        background-color: #ffffff;
+        color: @button-default-disabled-color;
+        border-color: @button-default-border-disabled-color;
+    }
+    // 加载状态
+    &.loading.default {
+        color: @button-default-hover-color;
+        border-color: @button-default-border-hover-color;
+    }
+
+}
+
+
+.@{prefix}-container {
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;
+    text-align: center;
+
+    .no-selected();
+
+    > i {
+        margin-right: 4px;
+    }
+    > span {
+        white-space: nowrap;
+    }
+    & span:last-child {
+        margin-left: 4px;
+    }
+    &.disabled, &.loading {
+        cursor: not-allowed;
+    }
+
+    &.radius {
+        border-radius: 16px;
+    }
+    &.dotted {
+        border-style: dashed;
+    }
+
+    .button-size-mixin(@sizes);
+    .button-type-mixin(@types);
+    .button-default-type-mixin();
+}
