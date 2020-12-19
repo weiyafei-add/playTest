@@ -6,6 +6,10 @@ import {Button} from 'antd'
 // 主题色
 console.log('最后一次修复线上BUg,完毕')
 
+console.log('继续写代码，又有问题了')
+console.log('还要修改一下')
+console.log('代码写完')
+console.log('object')
 interface ThemeProps {
   [key: string]: {color: string, background: string}
 }
