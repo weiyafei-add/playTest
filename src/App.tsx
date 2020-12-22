@@ -3,6 +3,7 @@ import './App.less';
 import Hello from './button/index'
 import MyButton from './ButtonCustom/button'
 import {Button} from 'antd'
+import FancyButton from './REF'
 // 主题色
 console.log('最后一次修复线上BUg,完毕')
 
@@ -13,7 +14,6 @@ console.log('object')
 interface ThemeProps {
   [key: string]: {color: string, background: string}
 }
-465465
 console.log('bug 修复完毕')
 
 export const theme: ThemeProps = {
@@ -40,6 +40,9 @@ console.log('线上问题修复一下')
       {
         Buttons()
       }
+
+      <br/>
+      <FancyButton/>
     </div>
   );
 }
