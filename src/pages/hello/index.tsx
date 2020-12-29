@@ -62,6 +62,7 @@ enum Desc {
 }
 
 console.log(Desc.Up)
+console.log(4165454)
 
 
 function echo<T extends IWithLength>(arg:T): T {
