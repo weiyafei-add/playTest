@@ -1,0 +1,21 @@
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+     transform: translateY(5px);
+  }
+}
+
+.animation {
+  width: 100px;
+  height: 100px;
+  background-color: #858585;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  transform: translateX(100px);
+}
