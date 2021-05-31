@@ -1,11 +1,8 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React from "react";
 import "./App.less";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import PageOne from "./tt/page1";
-import PageTwo from "./tt/page2";
-import Animation from "./animation/index";
-
+import Routes from "./routers";
+import { renderRoutes } from "react-router-config";
+import { BrowserRouter } from "react-router-dom";
 // 主题色
 
 interface ThemeProps {
@@ -23,18 +20,9 @@ export const theme: ThemeProps = {
   },
 };
 export const themeContext = React.createContext(theme.light);
-const arr = new Array(5).fill("1");
 
 function App() {
-  return (
-    <div className="App">
-      <DndProvider backend={HTML5Backend}>
-        <PageOne></PageOne>
-        <PageTwo></PageTwo>
-      </DndProvider>
-      <Animation />
-    </div>
-  );
+  return <BrowserRouter>{renderRoutes(Routes)}</BrowserRouter>;
 }
 
 export default App;
