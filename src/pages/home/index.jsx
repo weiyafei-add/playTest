@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "../../components/customModal";
+import MockList from "../listView";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -18,7 +19,14 @@ const Home = () => {
       <div id="app-root"></div>
       <div id="modal-root"></div>
       <Modal show={show} close={close} addCount={addCount} />
-      <button onClick={() => setShow(!show)}>打开modal{count}</button>
+      <button
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        打开modal{count}
+      </button>
+      <MockList />
     </div>
   );
 };
