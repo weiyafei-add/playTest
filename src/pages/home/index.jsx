@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "../../components/customModal";
 import MockList from "../listView";
-
-const Home = () => {
+import Header from "../header";
+import { renderRoutes } from "react-router-config";
+const Home = (props) => {
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log(props);
+  }, []);
 
   const close = () => {
     setShow(false);
@@ -15,7 +20,7 @@ const Home = () => {
   };
   return (
     <div>
-      <div>home</div>
+      <Header />
       <div id="app-root"></div>
       <div id="modal-root"></div>
       <Modal show={show} close={close} addCount={addCount} />
@@ -27,6 +32,7 @@ const Home = () => {
         打开modal{count}
       </button>
       <MockList />
+      {renderRoutes(props.route.routes)}
     </div>
   );
 };
