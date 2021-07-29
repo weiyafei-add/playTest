@@ -14,6 +14,12 @@ const Header = () => {
       actived: false,
       path: "/home/scroll-table",
     },
+    {
+      id: 3,
+      text: "observer-case",
+      actived: false,
+      path: "/observer",
+    },
   ]);
 
   const handleOnMenuClick = (item: object) => {
