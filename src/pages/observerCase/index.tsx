@@ -1,6 +1,6 @@
-import Axios from "axios";
 import React, { FC, useEffect, useRef, useState } from "react";
 import Header from "../header";
+import fetch from "../../utils/network/fetch";
 import "./index.less";
 
 const prefix = "observer-oc";
@@ -14,13 +14,17 @@ const ObserverCase: FC = (props: any) => {
       if (ioRef.current) ioRef.current.unobserve(listenerRef.current);
       ioRef.current = new IntersectionObserver(
         () => {
-          Axios.get("https://dog.ceo/api/breeds/image/random").then((res) => {
-            if (res.data.status !== "success") {
+          fetch({
+            path: `https://dog.ceo/api/breeds/image/random`,
+            method: "get",
+          }).then((res) => {
+            console.log(res);
+            if (!res.success) {
               console.log("获取数据失败");
               return;
             }
             setListData((current) => {
-              return current.concat([res.data.message]);
+              return current.concat([res.message]);
             });
           });
         },
