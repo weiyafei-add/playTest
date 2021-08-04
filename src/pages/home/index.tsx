@@ -3,12 +3,15 @@ import Modal from "../../components/customModal";
 import MockList from "../listView";
 import Header from "../header";
 import { renderRoutes } from "react-router-config";
-const Home = (props) => {
+
+const Home = (props: any) => {
+  const { route } = props;
+
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(props);
+    console.log(route.routes);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,7 +36,7 @@ const Home = (props) => {
         打开modal{count}
       </button>
       <MockList />
-      {renderRoutes(props.route.routes)}
+      {renderRoutes(route.routes)}
     </div>
   );
 };

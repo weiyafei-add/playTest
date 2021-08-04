@@ -22,7 +22,11 @@ export const theme: ThemeProps = {
 export const themeContext = React.createContext(theme.light);
 
 function App() {
-  return <BrowserRouter>{renderRoutes(Routes)}</BrowserRouter>;
+  return (
+    <div>
+      <BrowserRouter>{renderRoutes(Routes)}</BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

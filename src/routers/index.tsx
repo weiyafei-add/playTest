@@ -1,13 +1,16 @@
 import React, { Suspense } from "react";
-import App from "../App";
-import { Redirect } from "react-router-dom";
 import "./index.less";
+// import Home from "../pages/home";
+// import MyListView from "../pages/myListView";
+// import ObserverCase from "../pages/observerCase";
+// import CustomAnimation from "../requestAnimation";
 
 const prefix = "router-r";
 
 const Home = React.lazy(() => import("../pages/home/index"));
 const MyListView = React.lazy(() => import("../pages/myListView/index"));
 const ObserverCase = React.lazy(() => import("../pages/observerCase/index"));
+const CustomAnimation = React.lazy(() => import("../requestAnimation/index"));
 
 const SuspenseComponent = (Component: any) => (props: any) => {
   return (
@@ -20,29 +23,28 @@ const SuspenseComponent = (Component: any) => (props: any) => {
 const Routers = [
   {
     path: "/",
-    component: App,
+    component: SuspenseComponent(Home),
     exact: true,
-    render: () => <Redirect to={"/home"} />,
   },
   {
     path: "/home",
     component: SuspenseComponent(Home),
-    key: "home",
     exact: true,
     routes: [
       {
-        path: "/scroll-table",
-        key: "scroll",
-        exact: true,
+        path: "/home/scroll-table",
         component: SuspenseComponent(MyListView),
       },
     ],
   },
   {
+    path: "/home/animation",
+    component: SuspenseComponent(CustomAnimation),
+  },
+  {
     path: "/observer",
     component: SuspenseComponent(ObserverCase),
     key: "observer",
-    exact: true,
   },
 ];
 

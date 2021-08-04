@@ -37,7 +37,7 @@ function fetch({
   params = {},
   type = ContentType.ApplicationJson,
   headers = {},
-}): Promise<NetworkResponseType> {
+}): Promise<NetworkResponseType> | null {
   const options: AxiosRequestConfig = {
     url: path,
     method,
@@ -48,8 +48,8 @@ function fetch({
   };
 
   if (
-    options.method.toLocaleUpperCase() === "GET" ||
-    options.method.toLocaleUpperCase() === "DELETE"
+    options.method!.toLocaleUpperCase() === "GET" ||
+    options.method!.toLocaleUpperCase() === "DELETE"
   ) {
     return axios({ ...options, params: { ...params } })
       .then(responseHandleSuccess)
@@ -57,8 +57,8 @@ function fetch({
   }
 
   if (
-    options.method.toLocaleUpperCase() === "POST" ||
-    options.method.toLocaleUpperCase() === "PUT"
+    options.method!.toLocaleUpperCase() === "POST" ||
+    options.method!.toLocaleUpperCase() === "PUT"
   ) {
     const data =
       type === ContentType.ApplicationJson ? params : qs.stringify(params);

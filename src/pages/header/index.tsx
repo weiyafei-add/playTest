@@ -10,9 +10,9 @@ const Header = () => {
     { id: 1, text: "主页", actived: true, path: "/" },
     {
       id: 2,
-      text: "ScrollTable-HooK",
+      text: "animation",
       actived: false,
-      path: "/home/scroll-table",
+      path: "/home/animation",
     },
     {
       id: 3,
