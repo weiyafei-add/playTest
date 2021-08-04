@@ -11,6 +11,8 @@ interface ObjProps {
   [key: string]: any;
 }
 
+// version: 1
+
 const CustomAnimation: FC = () => {
   const boxRef = useRef<any>(null);
 
